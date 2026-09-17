@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number Blitz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="cabinet">
+
+  <!-- ============ SCREEN 1: PLAYER ENTRY ============ -->
+  <section class="screen is-active" id="screen-start">
+    <div class="brand">
+      <h1 class="brand__title">Number<br>Blitz</h1>
+      <p class="brand__tag">Sixty seconds. Solve as many as you can.</p>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="playerName">Player name</label>
+      <input class="field__input" id="playerName" type="text" maxlength="16"
+             placeholder="Type your nickname" autocomplete="off">
+      <p class="field__error" id="nameError" hidden>Enter a name first — it gets saved with your score.</p>
+    </div>
+
+    <button class="btn btn--go" id="btnStart">Start game</button>
+
+    <button class="btn btn--ghost" id="btnViewRecords">View saved records</button>
+  </section>
+
+  <!-- ============ SCREEN 2: GAMEPLAY ============ -->
+  <section class="screen" id="screen-play">
+    <div class="hud">
+      <div class="hud__cell">
+        <span class="hud__num" id="hudScore">0</span>
+        <span class="hud__key">score</span>
+      </div>
+      <div class="hud__cell">
+        <span class="hud__num" id="hudLevel">1</span>
+        <span class="hud__key">level</span>
+      </div>
+      <div class="hud__cell hud__cell--time">
+        <span class="hud__num" id="hudTime">60</span>
+        <span class="hud__key">seconds</span>
+      </div>
+    </div>
+
+    <div class="timebar"><div class="timebar__fill" id="timeFill"></div></div>
+
+    <p class="playerchip" id="playerChip">Player</p>
+
+    <div class="question" id="question">7 + 8</div>
+
+    <div class="choices" id="choices"></div>
+
+    <p class="feedback" id="feedback">&nbsp;</p>
+  </section>
+
+  <!-- ============ SCREEN 3: RESULT + SAVE ============ -->
+  <section class="screen" id="screen-over">
+    <h2 class="over__head">Round complete</h2>
+
+    <div class="scorecard">
+      <p class="scorecard__score" id="finalScore">0</p>
+      <p class="scorecard__meta">
+        <span id="finalName">Player</span> reached level <span id="finalLevel">1</span>
+        with <span id="finalCorrect">0</span> correct
+      </p>
+      <p class="scorecard__remark" id="finalRemark">Keep practising</p>
+    </div>
+
+    <p class="savenote" id="saveNote">Saving record…</p>
+
+    <button class="btn btn--go" id="btnAgain">Play again</button>
+    <button class="btn btn--ghost" id="btnToRecords">View saved records</button>
+  </section>
+
+  <!-- ============ SCREEN 4: RETRIEVED DATA ============ -->
+  <section class="screen" id="screen-records">
+    <h2 class="over__head">Saved records</h2>
+    <p class="records__sub">Retrieved from browser storage, newest scores ranked first.</p>
+
+    <ol class="board" id="board"></ol>
+    <p class="board__empty" id="boardEmpty" hidden>No records yet. Play a round and your score gets saved here.</p>
+
+    <details class="raw">
+      <summary class="raw__summary">Show stored data (raw)</summary>
+      <pre class="raw__body" id="rawData"></pre>
+    </details>
+
+    <button class="btn btn--go" id="btnBack">Back to start</button>
+    <button class="btn btn--danger" id="btnClear">Delete all records</button>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
